@@ -1,0 +1,386 @@
+/* ===============================
+   DASHBOARD HEADER
+================================ */
+
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h2 {
+  font-size: 1.9rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.dashboard-header p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+
+/* ===============================
+   KPI SECTION
+================================ */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.kpi-card {
+  background: var(--card-bg);
+  padding: 1.8rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: 0.25s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-4px);
+}
+
+.kpi-card h4 {
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.kpi-card h2 {
+  font-size: 1.9rem;
+}
+
+.risk-high {
+  color: #ef4444;
+}
+
+.growth {
+  color: var(--secondary-green);
+}
+
+
+/* ===============================
+   ANALYTICS CHARTS
+================================ */
+
+.analytics-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.chart-card {
+  background: var(--card-bg);
+  padding: 1.8rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-height: 340px;
+}
+
+.chart-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+
+/* ===============================
+   HISTORY WRAPPER
+================================ */
+
+.history-wrapper {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.05);
+}
+
+
+/* ===============================
+   HISTORY HEADER
+================================ */
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.history-header h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+
+/* ===============================
+   EXPORT DROPDOWN
+================================ */
+
+.export-dropdown {
+  position: relative;
+}
+
+.export-btn {
+  padding: 0.6rem 1.2rem;
+  background: var(--primary-blue);
+  color: white;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.export-btn:hover {
+  background: #1d4ed8;
+}
+
+.export-menu {
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  padding: 0.5rem 0;
+  min-width: 160px;
+  z-index: 10;
+}
+
+.export-menu div {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.export-menu div:hover {
+  background: #f3f4f6;
+}
+
+
+/* ===============================
+   FILTER SECTION
+================================ */
+
+.filter-section {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  min-width: 160px;
+  transition: 0.2s ease;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+
+/* ===============================
+   GLASS TABLE
+================================ */
+
+.glass-table {
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  overflow-x: auto;
+}
+
+.glass-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.glass-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.glass-table th,
+.glass-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.glass-table tr:hover {
+  background: rgba(37, 99, 235, 0.05);
+}
+
+
+/* ===============================
+   RISK BADGES
+================================ */
+
+.risk-badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.risk-badge.low {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.risk-badge.medium {
+  background: rgba(250, 204, 21, 0.2);
+  color: #ca8a04;
+}
+
+.risk-badge.high {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+
+/* ===============================
+   PAGINATION
+================================ */
+
+.pagination {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.pagination button {
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.pagination button.active {
+  background: var(--primary-blue);
+  color: white;
+  border-color: var(--primary-blue);
+}
+
+
+/* ===============================
+   MODAL
+================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.modal {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.modal h3 {
+  margin-bottom: 1rem;
+}
+
+
+/* HEADER ACTIONS */
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* FILTER BUTTON */
+.filter-toggle-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  background: #F3F4F6;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.filter-toggle-btn:hover {
+  background: #E5E7EB;
+}
+
+/* DROPDOWN PANEL */
+.dropdown-panel {
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  min-width: 240px;
+  z-index: 20;
+}
+
+.dropdown-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8rem;
+}
+
+.dropdown-group label {
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+  color: #6b7280;
+}
+
+.dropdown-group input,
+.dropdown-group select {
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+}
+
+/* VIEW BUTTON */
+.view-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+  border: none;
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563EB;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-size: 0.85rem;
+}
+
+.view-btn:hover {
+  background: #2563EB;
+  color: white;
+}

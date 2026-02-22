@@ -1,0 +1,27 @@
+:root {
+  --primary-blue: #2563EB;
+  --secondary-green: #10B981;
+  --background: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --text-dark: #1F2937;
+  --radius: 16px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-dark);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}

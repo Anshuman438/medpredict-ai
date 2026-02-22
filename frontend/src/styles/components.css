@@ -1,0 +1,986 @@
+/* =====================================================
+   GLOBAL COMPONENTS
+===================================================== */
+
+.primary-btn {
+  background: white;
+  color: var(--primary-blue);
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.secondary-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 16px;
+  border: 2px solid #2563EB;
+  background: transparent;
+  color: #2563EB;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: #2563EB;
+  color: white;
+}
+
+.danger-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.danger-btn:hover {
+  background: #dc2626;
+}
+
+.error-text {
+  color: #ef4444;
+  margin-bottom: 1rem;
+}
+
+
+
+/* ==========================================
+   NAVBAR BUTTON – PREMIUM STYLE
+========================================== */
+
+.logout-btn {
+  padding: 8px 18px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #EF4444, #DC2626);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 14px rgba(239,68,68,0.25);
+}
+
+/* Hover */
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(239,68,68,0.35);
+}
+
+/* Active (click effect) */
+.logout-btn:active {
+  transform: scale(0.96);
+}
+
+/* Optional: subtle glow on focus */
+.logout-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.25);
+}
+
+/* =====================================================
+   LANDING PAGE
+===================================================== */
+
+.landing-container {
+  min-height: 100vh;
+  background: #F8FAFC;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hero-section {
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  color: #1F2937;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  color: #4B5563;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+/* =====================================================
+   SYMPTOM CHECKER – PREMIUM HEALTH TECH DESIGN
+===================================================== */
+
+.symptom-wrapper {
+  max-width: 900px;
+  margin: auto;
+  padding: 2.5rem 1.5rem;
+}
+
+/* ================= Header ================= */
+
+.symptom-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.symptom-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.symptom-header p {
+  margin-top: 0.4rem;
+  color: #6B7280;
+  font-size: 0.95rem;
+}
+
+/* ================= Search ================= */
+
+.symptom-search {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid #E5E7EB;
+  background: #F9FAFB;
+  transition: 0.3s ease;
+  font-size: 0.9rem;
+  margin-bottom: 1.3rem;
+}
+
+.symptom-search:focus {
+  outline: none;
+  border-color: #2563EB;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.08);
+}
+
+/* ================= Symptom Grid ================= */
+
+.symptom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.symptom-pill {
+  padding: 10px 14px;
+  border-radius: 30px;
+  border: 1px solid #E5E7EB;
+  background: white;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.symptom-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+}
+
+.symptom-pill.active {
+  background: #2563EB;
+  color: white;
+  border-color: #2563EB;
+}
+
+/* ================= Action Button ================= */
+
+.action-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+/* =====================================================
+   ANALYSIS MODAL – COMPACT NO SCROLL
+===================================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.analysis-modal {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  padding: 1.4rem 1.6rem;
+  border-radius: 18px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  position: relative;
+  animation: modalFade 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* Close Button */
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #6B7280;
+  transition: 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #111827;
+}
+
+/* Title */
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Risk Badge */
+
+.risk-badge {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.risk-badge.low { background: #DCFCE7; color: #166534; }
+.risk-badge.medium { background: #FEF9C3; color: #854D0E; }
+.risk-badge.high { background: #FEE2E2; color: #991B1B; }
+
+/* Severity Bar */
+
+.severity-bar {
+  width: 100%;
+  height: 8px;
+  background: #E5E7EB;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.severity-fill {
+  height: 100%;
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+.severity-fill.low { width: 33%; background: #10B981; }
+.severity-fill.medium { width: 66%; background: #FACC15; }
+.severity-fill.high { width: 100%; background: #EF4444; }
+
+/* Confidence */
+
+.confidence-text {
+  font-size: 0.85rem;
+  color: #374151;
+}
+
+/* =====================================================
+   RECOMMENDATIONS
+===================================================== */
+
+.recommendation-section h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.recommendation-section h5 {
+  margin-top: 0.6rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.recommendation-section ul {
+  padding-left: 1.1rem;
+}
+
+.recommendation-section li {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+}
+
+/* Compact Expand */
+
+.rec-content {
+  max-height: 90px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.rec-content.expanded {
+  max-height: 260px;
+}
+
+/* Beautiful Read More */
+
+.read-more-btn {
+  margin-top: 0.6rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  color: white;
+  font-weight: 600;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 6px 14px rgba(37,99,235,0.25);
+}
+
+.read-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37,99,235,0.35);
+}
+
+/* =====================================================
+   COMMENT SECTION – CLEAN & BALANCED
+===================================================== */
+
+.note-section {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #E5E7EB;
+}
+
+.note-section textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #E5E7EB;
+  background: #F9FAFB;
+  font-size: 0.85rem;
+  resize: vertical;
+  transition: 0.3s ease;
+}
+
+.note-section textarea:focus {
+  outline: none;
+  border-color: #2563EB;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+}
+
+/* Modal Buttons */
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 0.8rem;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+}
+
+/* Remove Button */
+
+.remove-report {
+  margin-top: 0.8rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.remove-report:hover {
+  background: #dc2626;
+}
+
+/* Animation */
+
+@keyframes modalFade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .analysis-modal {
+    padding: 1.2rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+}
+
+
+
+
+
+/* =====================================================
+   CHAT PAGE
+===================================================== */
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 140px);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--background);
+}
+
+.chat-bubble {
+  max-width: 70%;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+  font-size: 0.95rem;
+}
+
+.chat-bubble.user {
+  align-self: flex-end;
+  background: var(--primary-blue);
+  color: white;
+}
+
+.chat-bubble.ai {
+  align-self: flex-start;
+  background: #e5e7eb;
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #e5e7eb;
+}
+
+/* =====================================================
+   HISTORY PAGE
+===================================================== */
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.history-header select {
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #e5e7eb;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.history-table th,
+.history-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.history-table tr:not(:last-child) {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.view-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary-blue);
+  color: white;
+  cursor: pointer;
+}
+
+/* =====================================================
+   GLOBAL MODAL
+===================================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content-modern {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+}
+
+/* =====================================================
+   SYMPTOM ANALYSIS MODAL (POPUP)
+===================================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.analysis-modal {
+  background: #ffffff;
+  width: 100%;
+  max-width: 650px;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+  position: relative;
+  animation: fadeInUp 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+  transition: 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #111827;
+}
+
+/* Modal Title */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+/* Confidence */
+.confidence-text {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Recommendation Section */
+.recommendation-section {
+  margin-top: 1rem;
+}
+
+.recommendation-section h4 {
+  margin-bottom: 0.5rem;
+}
+
+.recommendation-section h5 {
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.recommendation-section ul {
+  padding-left: 1.2rem;
+}
+
+.recommendation-section li {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+/* Collapsible Recommendation */
+.rec-content {
+  max-height: 130px;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.rec-content.expanded {
+  max-height: 500px;
+}
+
+/* Modal Action Buttons */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.modal-actions button {
+  flex: 1;
+}
+
+/* Remove Report Button */
+.remove-report {
+  margin-top: 1rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.remove-report:hover {
+  background: #dc2626;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .analysis-modal {
+    padding: 1.5rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+}
+/* =====================================================
+   NOTES PAGE – COMPLETE PROFESSIONAL DESIGN
+===================================================== */
+
+/* ===== Wrapper ===== */
+
+.notes-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 1.5rem 3rem 1.5rem;
+}
+
+.notes-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 2rem;
+}
+
+/* ===== Add Note Card ===== */
+
+.add-note-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  transition: 0.3s ease;
+}
+
+.add-note-card:hover {
+  box-shadow: 0 20px 45px rgba(0,0,0,0.10);
+}
+
+.add-note-card input,
+.add-note-card textarea {
+  padding: 0.95rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  transition: 0.2s ease;
+  background: #F9FAFB;
+}
+
+.add-note-card input:focus,
+.add-note-card textarea:focus {
+  outline: none;
+  border-color: #2563EB;
+  background: #ffffff;
+}
+
+.add-note-card textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ===== Clear All Button ===== */
+
+.clear-all-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Notes Grid ===== */
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+/* ===== Note Cards ===== */
+
+.note-card-modern {
+  padding: 1.8rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  transition: 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  animation: fadeInNote 0.4s ease;
+}
+
+.note-card-modern:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+}
+
+.note-content {
+  flex-grow: 1;
+}
+
+.note-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 0.4rem;
+}
+
+.note-comment {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 0.8rem;
+}
+
+.note-preview {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #374151;
+  word-break: break-word;
+}
+
+/* ===== Read More Button ===== */
+
+.read-more-btn-modern {
+  background: none;
+  border: none;
+  color: #2563EB;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  transition: 0.2s ease;
+}
+
+.read-more-btn-modern:hover {
+  text-decoration: underline;
+  transform: translateX(3px);
+}
+
+/* ===== Remove Button Bottom Alignment ===== */
+.remove-bottom {
+  margin-top: 1.5rem;
+  align-self: flex-start;
+
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid #FCA5A5;
+  background: #FEF2F2;
+  color: #DC2626;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.remove-bottom:hover {
+  background: #DC2626;
+  color: white;
+  border-color: #DC2626;
+  box-shadow: 0 8px 18px rgba(220,38,38,0.25);
+  transform: translateY(-2px);
+}
+
+.remove-bottom:active {
+  transform: scale(0.96);
+}
+
+/* ===== Modal Styling ===== */
+
+.modal-content-modern {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 650px;
+  width: 100%;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeInNote 0.3s ease;
+}
+
+.modal-text {
+  max-height: 320px;
+  overflow-y: auto;
+  line-height: 1.6;
+  word-break: break-word;
+  padding-right: 6px;
+}
+
+/* Scrollbar Styling */
+.modal-text::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-text::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
+
+/* ===== Animations ===== */
+
+@keyframes fadeInNote {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 768px) {
+
+  .notes-wrapper {
+    padding: 1.5rem 1rem 2rem 1rem;
+  }
+
+  .add-note-card {
+    padding: 1.5rem;
+  }
+
+  .note-card-modern {
+    min-height: 240px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .note-card-modern {
+    padding: 1.4rem;
+  }
+
+}
