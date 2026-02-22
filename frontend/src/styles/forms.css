@@ -1,0 +1,47 @@
+.form-title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form input {
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #e5e7eb;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+}
+
+.full-btn {
+  width: 100%;
+}
+
+
+
+.auth-switch {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4B5563;
+}
+
+.auth-switch a {
+  color: #2563EB;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
