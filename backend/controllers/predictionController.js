@@ -17,7 +17,14 @@ const analyzeSymptoms = asyncHandler(async (req, res) => {
     { symptoms }
   )
 
-  const { condition, risk, confidence, model_version } = mlResponse.data
+  const {
+  condition,
+  risk,
+  confidence,
+  severity_score,
+  important_factors,
+  model_version
+} = mlResponse.data
 
   const recommendations = generateRecommendations(condition, risk)
 
@@ -27,10 +34,11 @@ const analyzeSymptoms = asyncHandler(async (req, res) => {
   condition,
   risk,
   confidence,
+  severityScore: severity_score,
   modelVersion: model_version,
+  importantFactors: important_factors,
   recommendations
 })
-
   res.status(201).json(savedPrediction)
 })
 
