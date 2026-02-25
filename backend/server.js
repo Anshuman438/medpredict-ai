@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors')
@@ -11,7 +12,6 @@ const authRoutes = require('./routes/authRoutes')
 const { errorHandler } = require('./middleware/errorMiddleware')
 const chatRoutes = require('./routes/chatRoutes')
 const noteRoutes = require('./routes/noteRoutes')
-
 dotenv.config()
 
 connectDB()

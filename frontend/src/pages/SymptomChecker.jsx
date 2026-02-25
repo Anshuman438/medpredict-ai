@@ -72,10 +72,7 @@ function SymptomChecker() {
   }
 
   const handleSaveNote = async () => {
-    if (!noteText.trim()) {
-      alert('Please write note details')
-      return
-    }
+    if (!noteText.trim()) return alert('Please write note details')
 
     try {
       setSavingNote(true)
@@ -88,9 +85,7 @@ function SymptomChecker() {
 
       alert('Note saved successfully')
       setNoteText('')
-
     } catch (error) {
-      console.error(error.response?.data || error.message)
       alert('Failed to save note')
     } finally {
       setSavingNote(false)
@@ -112,6 +107,10 @@ function SymptomChecker() {
     localStorage.removeItem('analysisResult')
   }
 
+  const severityWidth = result?.severityScore
+    ? Math.min(result.severityScore * 20, 100)
+    : 0
+
   return (
     <MainLayout>
 
@@ -119,7 +118,7 @@ function SymptomChecker() {
 
         <div className="symptom-header">
           <h2>AI Symptom Intelligence</h2>
-          <p>Advanced AI analysis for your health signals</p>
+          <p>Advanced AI analysis powered by machine learning</p>
         </div>
 
         <input
@@ -173,12 +172,32 @@ function SymptomChecker() {
             </span>
 
             <div className="severity-bar">
-              <div className={`severity-fill ${result.risk?.toLowerCase()}`}></div>
+              <div
+                className={`severity-fill ${result.risk?.toLowerCase()}`}
+                style={{ width: `${severityWidth}%` }}
+              />
             </div>
 
             <p className="confidence-text">
               Confidence: <strong>{result.confidence}</strong>
             </p>
+
+            <p className="model-version">
+              Model Version: {result.modelVersion}
+            </p>
+
+            {result.importantFactors?.length > 0 && (
+              <div className="explain-section">
+                <h4>Key Contributing Factors</h4>
+                <ul>
+                  {result.importantFactors.map((factor, i) => (
+                    <li key={i}>
+                      {factor.feature.replace('_', ' ')} — Impact: {factor.impact}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <div className="recommendation-section">
               <h4>AI Health Recommendations</h4>
