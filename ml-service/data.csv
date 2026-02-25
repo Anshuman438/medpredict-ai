@@ -1,0 +1,11 @@
+fever,headache,fatigue,cough,chest_pain,dizziness,condition
+1,1,1,0,1,0,Hypertension
+0,1,0,1,0,1,Cold
+1,0,1,0,1,0,Hypertension
+0,1,0,1,0,1,Cold
+1,1,1,0,1,0,Hypertension
+0,0,0,1,0,1,Cold
+1,1,1,0,1,0,Hypertension
+0,1,0,1,0,1,Cold
+1,1,1,0,1,0,Hypertension
+0,0,0,1,0,1,Cold

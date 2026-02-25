@@ -575,6 +575,18 @@
   cursor: pointer;
 }
 
+.dropdown-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgb(118, 99, 243);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.5rem;
+  z-index: 10;
+}
+
 /* =====================================================
    GLOBAL MODAL
 ===================================================== */

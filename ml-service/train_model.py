@@ -1,24 +1,34 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import classification_report
 import joblib
 
-# Dummy training dataset
-data = {
-    "fever": [1,0,1,0,1,0,1,0],
-    "headache": [1,1,0,0,1,1,0,0],
-    "fatigue": [1,0,1,0,1,0,1,0],
-    "cough": [0,1,0,1,0,1,0,1],
-    "risk": ["High","Low","High","Low","High","Low","High","Low"]
-}
+# Load dataset
+df = pd.read_csv("data.csv")
 
-df = pd.DataFrame(data)
+X = df.drop(columns=["condition"])
+y = df["condition"]
 
-X = df[["fever","headache","fatigue","cough"]]
-y = df["risk"]
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 
-model = RandomForestClassifier()
-model.fit(X, y)
+# Build pipeline
+pipeline = Pipeline([
+    ("model", RandomForestClassifier(n_estimators=200))
+])
 
-joblib.dump(model, "model.pkl")
+# Train
+pipeline.fit(X_train, y_train)
 
-print("Model trained and saved as model.pkl")
+# Evaluate
+y_pred = pipeline.predict(X_test)
+print(classification_report(y_test, y_pred))
+
+# Save full pipeline
+joblib.dump(pipeline, "model.pkl")
+
+print("Production pipeline trained and saved.")
