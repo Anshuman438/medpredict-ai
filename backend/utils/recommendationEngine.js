@@ -3,6 +3,24 @@ const generateRecommendations = (condition, risk) => {
   let diet = []
   let lifestyle = []
 
+  if (String(condition).toLowerCase().includes('inconclusive')) {
+    return {
+      exercise: [
+        'Avoid strenuous activity until symptoms are clearer',
+        'Take rest and monitor symptom progression'
+      ],
+      diet: [
+        'Keep hydration high (water/electrolytes)',
+        'Prefer light, easily digestible meals'
+      ],
+      lifestyle: [
+        'Track additional symptoms for the next 12-24 hours',
+        'Retake analysis with more symptom details',
+        'Seek clinical evaluation if symptoms worsen'
+      ]
+    }
+  }
+
   if (risk === 'High') {
     exercise = [
       'Light walking (20 mins daily)',

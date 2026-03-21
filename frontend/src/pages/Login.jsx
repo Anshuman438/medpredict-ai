@@ -28,31 +28,22 @@ function Login() {
   return (
   <AuthLayout>
     <h2 className="form-title">Welcome Back</h2>
+    <p className="form-subtitle">Secure access to your health intelligence</p>
 
     <form className="form" onSubmit={handleSubmit}>
-      <input
-        name="email"
-        type="email"
-        placeholder="Email"
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="password"
-        type="password"
-        placeholder="Password"
-        onChange={handleChange}
-        required
-      />
-
-      <button className="primary-btn full-btn">
-        Login
-      </button>
+      <div className="input-group">
+        <label>Email Address</label>
+        <input name="email" type="email" placeholder="e.g. user@example.com" onChange={handleChange} required />
+      </div>
+      <div className="input-group">
+        <label>Password</label>
+        <input name="password" type="password" placeholder="••••••••" onChange={handleChange} required />
+      </div>
+      <button className="primary-btn full-btn">Sign In</button>
     </form>
 
     <p className="auth-switch">
-      Don’t have an account?{' '}
-      <Link to="/register">Register</Link>
+      New to MedPredict? <Link to="/register" className="auth-link">Create Account</Link>
     </p>
 
   </AuthLayout>

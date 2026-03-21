@@ -12,7 +12,16 @@ const knownSymptoms = [
   "Fatigue",
   "Cough",
   "Chest Pain",
-  "Dizziness"
+  "Shortness of Breath",
+  "Nausea",
+  "Dizziness",
+  "Sore Throat",
+  "Body Ache",
+  "Blurred Vision",
+  "Rapid Heartbeat",
+  "Chills",
+  "Loss of Appetite",
+  "Insomnia"
 ];
 
 const extractSymptomsFromText = (text) => {

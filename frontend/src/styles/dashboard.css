@@ -1,9 +1,45 @@
 /* ===============================
    DASHBOARD HEADER
 ================================ */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease-out;
+}
 
 .dashboard-header {
-  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.status-pill{
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.pulse {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 .dashboard-header h2 {
@@ -17,28 +53,50 @@
   font-size: 0.95rem;
 }
 
+.stats-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
 
 /* ===============================
    KPI SECTION
 ================================ */
 
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
+.glass-morph {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .kpi-card {
-  background: var(--card-bg);
-  padding: 1.8rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: 0.25s ease;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 2rem;
 }
 
 .kpi-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.1);
+}
+
+.kpi-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
 }
 
 .kpi-card h4 {
@@ -67,23 +125,53 @@
 
 .analytics-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
   gap: 1.5rem;
+  align-items: start;
 }
 
 .chart-card {
-  background: var(--card-bg);
-  padding: 1.8rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  min-height: 340px;
+  padding: 2rem;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 .chart-card h3 {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
 }
+
+.risk-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.low { background-color: #10B981; }
+.dot.medium { background-color: #FACC15; }
+.dot.high { background-color: #EF4444; }
 
 
 /* ===============================
@@ -201,12 +289,9 @@
 ================================ */
 
 .glass-table {
-  backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.85);
-  border-radius: 20px;
-  padding: 1rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  overflow-x: auto;
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .glass-table table {
@@ -383,4 +468,17 @@
 .view-btn:hover {
   background: #2563EB;
   color: white;
+}
+
+.recharts-default-tooltip {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border: none !important;
+  border-radius: 15px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
