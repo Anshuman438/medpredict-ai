@@ -102,8 +102,11 @@ function History() {
     doc.text('Prediction History', 10, 10)
 
     filtered.forEach((p, i) => {
+      const conf = typeof p.confidence === 'number'
+        ? `${(p.confidence * 100).toFixed(1)}%`
+        : p.confidence
       doc.text(
-        `${i + 1}. ${p.condition} | ${p.risk} | ${p.confidence}`,
+        `${i + 1}. ${p.condition} | ${p.risk} | ${conf}`,
         10,
         20 + i * 8
       )
@@ -111,6 +114,42 @@ function History() {
 
     doc.save('history.pdf')
     setDropdownOpen(null)
+  }
+
+  const exportSinglePDF = (item) => {
+    const doc = new jsPDF()
+    const conf = typeof item.confidence === 'number'
+      ? `${(item.confidence * 100).toFixed(1)}%`
+      : item.confidence
+    doc.setFontSize(16)
+    doc.text('MedPredict AI - Diagnostic Report', 10, 15)
+    doc.setFontSize(12)
+    doc.text(`Condition: ${item.condition}`, 10, 30)
+    doc.text(`Risk Level: ${item.risk}`, 10, 40)
+    doc.text(`Confidence: ${conf}`, 10, 50)
+    doc.text(`Date: ${new Date(item.createdAt).toLocaleDateString()}`, 10, 60)
+
+    let y = 75
+    const sections = [
+      { title: 'Exercise', items: item.recommendations?.exercise || [] },
+      { title: 'Diet', items: item.recommendations?.diet || [] },
+      { title: 'Lifestyle', items: item.recommendations?.lifestyle || [] },
+    ]
+    sections.forEach(sec => {
+      if (sec.items.length > 0) {
+        doc.setFontSize(13)
+        doc.text(sec.title, 10, y)
+        y += 8
+        doc.setFontSize(11)
+        sec.items.forEach(rec => {
+          doc.text(`  - ${rec}`, 12, y)
+          y += 7
+        })
+        y += 4
+      }
+    })
+
+    doc.save(`report_${item.condition.replace(/\s+/g, '_')}.pdf`)
   }
 
   return (
@@ -206,9 +245,15 @@ function History() {
               </button>
 
               {dropdownOpen === 'export' && (
-                <div className="dropdown-panel">
-                  <div onClick={exportCSV}>Export as CSV</div>
-                  <div onClick={exportPDF}>Export as PDF</div>
+                <div className="dropdown-panel export-group">
+                  <button className="export-btn csv" onClick={exportCSV}>
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    Export CSV
+                  </button>
+                  <button className="export-btn pdf" onClick={exportPDF}>
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    Export PDF
+                  </button>
                 </div>
               )}
             </div>
@@ -238,7 +283,7 @@ function History() {
                       {item.risk}
                     </span>
                   </td>
-                  <td>{item.confidence}</td>
+                  <td>{typeof item.confidence === 'number' ? `${(item.confidence * 100).toFixed(1)}%` : item.confidence}</td>
                   <td>
                     <button
                       className="view-btn"
@@ -270,27 +315,49 @@ function History() {
 
         {/* Modal */}
         {selectedItem && (
-          <div
-            className="modal-overlay"
-            onClick={() => setSelectedItem(null)}
-          >
-            <div
-              className="modal"
-              onClick={e => e.stopPropagation()}
-            >
-              <h3>Detailed Analysis</h3>
-              <p><strong>Condition:</strong> {selectedItem.condition}</p>
-              <p><strong>Risk:</strong> {selectedItem.risk}</p>
-              <p><strong>Confidence:</strong> {selectedItem.confidence}</p>
-              <p><strong>Symptoms:</strong> {selectedItem.symptoms.join(', ')}</p>
+          <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
+            <div className="analysis-modal medical-theme" onClick={e => e.stopPropagation()}>
+              <button className="modal-close" onClick={() => setSelectedItem(null)}>×</button>
+              
+              <div className="modal-header-ai">
+                <div className="report-badge">Diagnostic Report</div>
+                <h2>{selectedItem.condition}</h2>
+                <p className="report-date">Generated on {new Date(selectedItem.createdAt).toLocaleDateString()}</p>
+              </div>
 
-              <button
-                className="export-btn"
-                style={{ marginTop: '1rem' }}
-                onClick={() => setSelectedItem(null)}
-              >
-                Close
-              </button>
+              <div className="risk-score-display">
+                <div className={`risk-indicator ${selectedItem.risk.toLowerCase()}`}>
+                  <span className="risk-label">Risk Level</span>
+                  <span className="risk-value">{selectedItem.risk}</span>
+                </div>
+              </div>
+
+              <div className="modal-body-content">
+                <div className="section-title">Analysis Summary</div>
+                <p className="summary-text">{selectedItem.summary || "No summary available for this report."}</p>
+                
+                <div className="section-title">Key Recommendations</div>
+                {['exercise', 'diet', 'lifestyle'].map(section => (
+                  selectedItem.recommendations?.[section]?.length > 0 && (
+                    <div key={section}>
+                      <h5 style={{ textTransform: 'capitalize', margin: '8px 0 4px' }}>{section}</h5>
+                      <ul className="recommendations-list">
+                        {selectedItem.recommendations[section].map((rec, i) => (
+                          <li key={i} className="rec-item">
+                            <span className="check-icon">✓</span> {rec}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )
+                ))}
+              </div>
+
+              <div className="modal-footer">
+                <button className="export-btn pdf" onClick={() => exportSinglePDF(selectedItem)}>
+                  Download PDF
+                </button>
+              </div>
             </div>
           </div>
         )}

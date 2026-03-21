@@ -1,0 +1,234 @@
+{
+  "model_version": "sleem_v1",
+  "model_type": "Self-Learning Evolutionary Ensemble",
+  "accuracy": 0.9268,
+  "f1_macro": 0.9024,
+  "n_features": 24,
+  "n_classes": 41,
+  "conditions": [
+    "(vertigo) Paroymsal  Positional Vertigo",
+    "AIDS",
+    "Acne",
+    "Alcoholic hepatitis",
+    "Allergy",
+    "Arthritis",
+    "Bronchial Asthma",
+    "Cervical spondylosis",
+    "Chicken pox",
+    "Chronic cholestasis",
+    "Common Cold",
+    "Dengue",
+    "Diabetes ",
+    "Dimorphic hemmorhoids(piles)",
+    "Drug Reaction",
+    "Fungal infection",
+    "GERD",
+    "Gastroenteritis",
+    "Heart attack",
+    "Hepatitis B",
+    "Hepatitis C",
+    "Hepatitis D",
+    "Hepatitis E",
+    "Hypertension ",
+    "Hyperthyroidism",
+    "Hypoglycemia",
+    "Hypothyroidism",
+    "Impetigo",
+    "Jaundice",
+    "Malaria",
+    "Migraine",
+    "Osteoarthristis",
+    "Paralysis (brain hemorrhage)",
+    "Peptic ulcer diseae",
+    "Pneumonia",
+    "Psoriasis",
+    "Tuberculosis",
+    "Typhoid",
+    "Urinary tract infection",
+    "Varicose veins",
+    "hepatitis A"
+  ],
+  "features": [
+    "fever",
+    "headache",
+    "fatigue",
+    "cough",
+    "chest_pain",
+    "shortness_of_breath",
+    "nausea",
+    "dizziness",
+    "sore_throat",
+    "body_ache",
+    "blurred_vision",
+    "rapid_heartbeat",
+    "chills",
+    "loss_of_appetite",
+    "insomnia",
+    "acidity",
+    "indigestion",
+    "stomach_pain",
+    "vomiting",
+    "skin_rash",
+    "itching",
+    "joint_pain",
+    "sweating",
+    "weight_loss"
+  ],
+  "symptom_map": {
+    "fever": [
+      "high_fever",
+      "mild_fever"
+    ],
+    "headache": [
+      "headache"
+    ],
+    "fatigue": [
+      "fatigue",
+      "lethargy",
+      "malaise"
+    ],
+    "cough": [
+      "cough",
+      "phlegm",
+      "mucoid_sputum",
+      "rusty_sputum",
+      "blood_in_sputum"
+    ],
+    "chest_pain": [
+      "chest_pain"
+    ],
+    "shortness_of_breath": [
+      "breathlessness"
+    ],
+    "nausea": [
+      "nausea",
+      "vomiting"
+    ],
+    "dizziness": [
+      "dizziness",
+      "spinning_movements",
+      "loss_of_balance",
+      "unsteadiness"
+    ],
+    "sore_throat": [
+      "throat_irritation",
+      "patches_in_throat"
+    ],
+    "body_ache": [
+      "muscle_pain",
+      "joint_pain",
+      "knee_pain",
+      "hip_joint_pain",
+      "neck_pain",
+      "back_pain",
+      "muscle_weakness",
+      "weakness_in_limbs"
+    ],
+    "blurred_vision": [
+      "blurred_and_distorted_vision",
+      "visual_disturbances"
+    ],
+    "rapid_heartbeat": [
+      "fast_heart_rate",
+      "palpitations"
+    ],
+    "chills": [
+      "chills",
+      "shivering"
+    ],
+    "loss_of_appetite": [
+      "loss_of_appetite"
+    ],
+    "insomnia": [
+      "restlessness",
+      "lack_of_concentration"
+    ],
+    "acidity": [
+      "acidity",
+      "indigestion"
+    ],
+    "indigestion": [
+      "indigestion",
+      "acidity",
+      "passage_of_gases",
+      "stomach_pain",
+      "abdominal_pain",
+      "belly_pain"
+    ],
+    "stomach_pain": [
+      "stomach_pain",
+      "abdominal_pain",
+      "belly_pain",
+      "distention_of_abdomen",
+      "swelling_of_stomach"
+    ],
+    "vomiting": [
+      "vomiting",
+      "nausea"
+    ],
+    "skin_rash": [
+      "skin_rash",
+      "itching",
+      "nodal_skin_eruptions",
+      "dischromic__patches",
+      "red_spots_over_body",
+      "skin_peeling",
+      "silver_like_dusting",
+      "blister",
+      "pus_filled_pimples",
+      "blackheads",
+      "yellow_crust_ooze",
+      "red_sore_around_nose",
+      "inflammatory_nails"
+    ],
+    "itching": [
+      "itching",
+      "skin_rash",
+      "internal_itching"
+    ],
+    "joint_pain": [
+      "joint_pain",
+      "knee_pain",
+      "hip_joint_pain",
+      "swelling_joints",
+      "movement_stiffness",
+      "painful_walking"
+    ],
+    "sweating": [
+      "sweating"
+    ],
+    "weight_loss": [
+      "weight_loss",
+      "weight_gain"
+    ]
+  },
+  "evolution_history": [
+    {
+      "generation": 1,
+      "best_accuracy": 0.9136,
+      "best_f1": 0.8967
+    },
+    {
+      "generation": 2,
+      "best_accuracy": 0.9136,
+      "best_f1": 0.8967
+    },
+    {
+      "generation": 3,
+      "best_accuracy": 0.9136,
+      "best_f1": 0.8967
+    }
+  ],
+  "best_individual_models": [
+    "RandomForestClassifier",
+    "XGBClassifier",
+    "RandomForestClassifier",
+    "RandomForestClassifier"
+  ],
+  "best_individual_weights": [
+    0.1410215567872302,
+    0.3579622176722185,
+    0.27560979462158475,
+    0.22540643091896656
+  ]
+}

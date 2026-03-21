@@ -22,30 +22,35 @@ function Register() {
       login(data)
       navigate('/dashboard')
     } catch (error) {
-      alert('Registration failed')
+      console.log(error.response.data)
+      alert(error.response?.data?.message || "Registration failed")
     }
   }
 
   return (
     <AuthLayout>
-     <form className="form" onSubmit={handleSubmit}>
-  <input name="name" placeholder="Full Name" onChange={handleChange} />
-  <input name="email" type="email" placeholder="Email" onChange={handleChange} />
-  <input name="password" type="password" placeholder="Password" onChange={handleChange} />
+      <h2 className="form-title">Join MedPredict</h2>
+      <p className="form-subtitle">Start your AI-powered wellness journey</p>
 
-  <button className="primary-btn full-btn">
-    Register
-  </button>
-</form>
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label>Full Name</label>
+          <input name="name" placeholder="Your Name" onChange={handleChange} required />
+        </div>
+        <div className="input-group">
+          <label>Email Address</label>
+          <input name="email" type="email" placeholder="user@example.com" onChange={handleChange} required />
+        </div>
+        <div className="input-group">
+          <label>Password</label>
+          <input name="password" type="password" placeholder="Create a strong password" onChange={handleChange} required />
+        </div>
+        <button className="primary-btn full-btn">Create Free Account</button>
+      </form>
 
-<div className="auth-switch">
-  <p>
-    Already have an account?
-    <Link to="/login" className="auth-link">
-      Login
-    </Link>
-  </p>
-</div>
+      <p className="auth-switch">
+        Already a member? <Link to="/login" className="auth-link">Login Here</Link>
+      </p>
     </AuthLayout>
   )
 }

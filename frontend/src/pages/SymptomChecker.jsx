@@ -9,7 +9,9 @@ const symptomOptions = [
   'Fever','Headache','Fatigue','Cough','Chest Pain',
   'Shortness of Breath','Nausea','Dizziness','Sore Throat',
   'Body Ache','Blurred Vision','Rapid Heartbeat',
-  'Chills','Loss of Appetite','Insomnia'
+  'Chills','Loss of Appetite','Insomnia',
+  'Acidity', 'Indigestion', 'Stomach Pain', 'Vomiting', 
+  'Skin Rash', 'Itching', 'Joint Pain', 'Sweating', 'Weight Loss'
 ]
 
 function SymptomChecker() {
@@ -64,7 +66,7 @@ function SymptomChecker() {
       setSelected([])
 
     } catch (err) {
-      console.error(err)
+      console.error(err.message)
       setError('Prediction failed.')
     } finally {
       setLoading(false)
@@ -115,19 +117,20 @@ function SymptomChecker() {
     <MainLayout>
 
       <div className="symptom-wrapper">
-
         <div className="symptom-header">
           <h2>AI Symptom Intelligence</h2>
           <p>Advanced AI analysis powered by machine learning</p>
         </div>
 
-        <input
-          type="text"
-          placeholder="Search symptoms..."
-          className="symptom-search"
-          value={search}
-          onChange={(e)=>setSearch(e.target.value)}
-        />
+        <div className="search-container-ai">
+          <input
+            type="text"
+            placeholder="Search symptoms (e.g., Fever, Headache)..."
+            className="symptom-search"
+            value={search}
+            onChange={(e)=>setSearch(e.target.value)}
+          />
+        </div>
 
         <div className="symptom-grid">
           {symptomOptions
@@ -140,6 +143,7 @@ function SymptomChecker() {
                 className={`symptom-pill ${selected.includes(symptom) ? 'active' : ''}`}
                 onClick={() => toggleSymptom(symptom)}
               >
+                {selected.includes(symptom) && <span className="check-icon">✓</span>}
                 {symptom}
               </button>
           ))}
@@ -149,53 +153,54 @@ function SymptomChecker() {
 
         <div className="action-section">
           {!loading ? (
-            <button className="primary-btn analyze-btn" onClick={handleSubmit}>
-              Analyze Now
+            <button className="primary-btn analyze-btn" onClick={handleSubmit} disabled={selected.length === 0}>
+              Run AI Analysis
             </button>
           ) : (
             <AnalyzingLoader />
           )}
         </div>
-
       </div>
 
       {showModal && result && (
         <div className="modal-overlay">
-          <div className="analysis-modal fade-in">
-
+          <div className="analysis-modal glass-morph fade-in">
             <button className="modal-close" onClick={()=>setShowModal(false)}>×</button>
 
-            <h3 className="modal-title">{result.condition}</h3>
-
-            <span className={`risk-badge ${result.risk?.toLowerCase()}`}>
-              {result.risk} Risk
-            </span>
-
-            <div className="severity-bar">
-              <div
-                className={`severity-fill ${result.risk?.toLowerCase()}`}
-                style={{ width: `${severityWidth}%` }}
-              />
+            <div className="modal-header-ai">
+              <div className="ai-badge">AI Diagnostic Report</div>
+              <h3 className="modal-title">{result.condition}</h3>
             </div>
 
-            <p className="confidence-text">
-              Confidence: <strong>{result.confidence}</strong>
-            </p>
+            <div className="risk-container">
+              <div className={`risk-indicator ${result.risk?.toLowerCase()}`}>
+                <span className="risk-label">{result.risk} Risk Level</span>
+                <div className="severity-bar-bg">
+                  <div 
+                    className="severity-bar-fill" 
+                    style={{ width: `${result.severityScore * 20 || 0}%` }}
+                  ></div>
+                </div>
+              </div>
+              <div className="confidence-meter">
+                <span className="conf-val">{typeof result.confidence === 'number' ? `${(result.confidence * 100).toFixed(1)}%` : result.confidence}</span>
+                <span className="conf-label"> Confidence</span>
+              </div>
+            </div>
 
-            <p className="model-version">
-              Model Version: {result.modelVersion}
-            </p>
+            <p className="model-version">AI Model Engine v{result.modelVersion}</p>
 
             {result.importantFactors?.length > 0 && (
               <div className="explain-section">
                 <h4>Key Contributing Factors</h4>
-                <ul>
-                  {result.importantFactors.map((factor, i) => (
-                    <li key={i}>
-                      {factor.feature.replace('_', ' ')} — Impact: {factor.impact}
-                    </li>
+                <div className="factors-grid">
+                  {result.importantFactors.slice(0, 3).map((factor, i) => (
+                    <div key={i} className="factor-chip">
+                      <span className="factor-name">{factor.feature.replace('_', ' ')}</span>
+                      <span className="factor-impact">+{factor.impact}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
 
@@ -203,28 +208,34 @@ function SymptomChecker() {
               <h4>AI Health Recommendations</h4>
 
               <div className={`rec-content ${showFullRec ? 'expanded' : ''}`}>
-                <h5>Exercise</h5>
-                <ul>
-                  {result.recommendations?.exercise?.map((i,idx)=>(
-                    <li key={idx}>{i}</li>
-                  ))}
-                </ul>
+                <div className="rec-group">
+                  <h5>Exercise</h5>
+                  <ul>
+                    {result.recommendations?.exercise?.map((i,idx)=>(
+                      <li key={idx}>{i}</li>
+                    ))}
+                  </ul>
+                </div>
 
                 {showFullRec && (
                   <>
-                    <h5>Diet</h5>
-                    <ul>
-                      {result.recommendations?.diet?.map((i,idx)=>(
-                        <li key={idx}>{i}</li>
-                      ))}
-                    </ul>
+                    <div className="rec-group">
+                      <h5>Dietary Suggestions</h5>
+                      <ul>
+                        {result.recommendations?.diet?.map((i, idx) => (
+                          <li key={idx}>{i}</li>
+                        ))}
+                      </ul>
+                    </div>
 
-                    <h5>Lifestyle</h5>
-                    <ul>
-                      {result.recommendations?.lifestyle?.map((i,idx)=>(
-                        <li key={idx}>{i}</li>
-                      ))}
-                    </ul>
+                    <div className="rec-group">
+                      <h5>Lifestyle Changes</h5>
+                      <ul>
+                        {result.recommendations?.lifestyle?.map((i, idx) => (
+                          <li key={idx}>{i}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </>
                 )}
               </div>
@@ -233,39 +244,35 @@ function SymptomChecker() {
                 className="read-more-btn"
                 onClick={()=>setShowFullRec(!showFullRec)}
               >
-                {showFullRec ? 'Show Less' : 'Read More'}
+                {showFullRec ? 'Show Less' : 'Full Detailed Analysis'}
               </button>
             </div>
 
             <div className="note-section">
               <textarea
-                placeholder="Add personal health notes..."
+                placeholder="Add personal health observations for your records..."
                 value={noteText}
                 onChange={(e)=>setNoteText(e.target.value)}
               />
 
-              <div className="modal-actions">
+              <div className="modal-footer-actions">
                 <button
                   className="secondary-btn"
                   onClick={handleSaveNote}
                   disabled={savingNote}
                 >
-                  {savingNote ? 'Saving...' : 'Save Note'}
+                  {savingNote ? 'Archiving...' : 'Archive to Notes'}
                 </button>
 
-                <button
-                  className="secondary-btn"
-                  onClick={exportPDF}
-                >
-                  Download PDF
+                <button className="primary-btn" onClick={exportPDF}>
+                  Download PDF Report
                 </button>
               </div>
             </div>
 
-            <button className="remove-report" onClick={removeReport}>
-              Remove Report
+            <button className="primary-btn" onClick={removeReport}>
+              Discard this analysis
             </button>
-
           </div>
         </div>
       )}

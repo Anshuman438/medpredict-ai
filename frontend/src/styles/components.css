@@ -2,35 +2,66 @@
    GLOBAL COMPONENTS
 ===================================================== */
 
+.ai-scanner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 2rem;
+}
+
+.scanner-circle {
+  width: 80px;
+  height: 80px;
+  border: 3px solid rgba(99, 102, 241, 0.2);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-line {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.5));
+  position: absolute;
+  top: -100%;
+  animation: scanLoop 2s ease-in-out infinite;
+}
+
 .primary-btn {
-  background: white;
+  background: var(--card-bg);
   color: var(--primary-blue);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow);
   padding: 0.9rem 2rem;
   border-radius: var(--radius);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .primary-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--primary-blue);
+  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
 }
 
 .secondary-btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 16px;
-  border: 2px solid #2563EB;
-  background: transparent;
-  color: #2563EB;
+  background: var(--card-bg);
+  color: var(--primary-blue);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow);
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius);
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .secondary-btn:hover {
-  background: #2563EB;
-  color: white;
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--primary-blue);
+  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
 }
 
 .danger-btn {
@@ -94,9 +125,18 @@
 
 .landing-container {
   min-height: 100vh;
-  background: #F8FAFC;
-  padding: 4rem 2rem;
-  text-align: center;
+  /* Advanced Mesh Gradient */
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 
 .hero-section {
@@ -105,15 +145,22 @@
 }
 
 .hero-section h1 {
-  font-size: 3rem;
-  color: #1F2937;
-  margin-bottom: 1rem;
+  font-size: 4rem; /* Larger font */
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  /* Text Gradient */
+  background: linear-gradient(to right, #6366f1, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
 }
 
 .hero-section p {
-  font-size: 1.1rem;
-  color: #4B5563;
-  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 .hero-buttons {
@@ -132,16 +179,27 @@
 }
 
 .feature-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  transition: 0.3s ease;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px); /* Glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--primary-blue);
+  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
 }
+
+.feature-card h3 {
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+}
+
 /* =====================================================
    SYMPTOM CHECKER – PREMIUM HEALTH TECH DESIGN
 ===================================================== */
@@ -201,25 +259,26 @@
 }
 
 .symptom-pill {
-  padding: 10px 14px;
-  border-radius: 30px;
-  border: 1px solid #E5E7EB;
+  padding: 12px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   background: white;
+  color: #64748b;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease;
-  font-weight: 500;
-  font-size: 0.85rem;
-}
-
-.symptom-pill:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .symptom-pill.active {
-  background: #2563EB;
+  background: var(--primary-blue);
   color: white;
-  border-color: #2563EB;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+  transform: scale(1.05);
+}
+
+.symptom-pill:hover:not(.active) {
+  background: rgba(99, 102, 241, 0.05);
+  border-color: var(--primary-blue);
 }
 
 /* ================= Action Button ================= */
@@ -235,29 +294,51 @@
 ===================================================== */
 
 .modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(5px);
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  z-index: 1000;
+  align-items: center; /* Centers vertically */
+  justify-content: center; /* Centers horizontally */
+  z-index: 2000;
+  padding: 20px;
+  margin-top: 50px;
+  
 }
 
 .analysis-modal {
-  background: #ffffff;
   width: 100%;
-  max-width: 520px;
-  padding: 1.4rem 1.6rem;
-  border-radius: 18px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  max-width: 700px;
+  max-height: 90vh; /* Limits height to 90% of the screen */
+  background: white;
+  border-radius: 24px;
+  padding: 2.5rem;
   position: relative;
-  animation: modalFade 0.25s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
+  overflow-y: auto; /* Adds scrollbar if content is too long */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Custom scrollbar styling for a cleaner look */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-blue) transparent;
+}
+
+.analysis-modal::-webkit-scrollbar {
+  width: 6px;
+}
+.analysis-modal::-webkit-scrollbar-thumb {
+  background-color: var(--primary-blue);
+  border-radius: 10px;
+}
+
+/* Ensure images/canvas within the modal don't break layout */
+.analysis-modal img, 
+.analysis-modal canvas {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Close Button */
@@ -277,6 +358,8 @@
 .modal-close:hover {
   color: #111827;
 }
+
+
 
 /* Title */
 
@@ -586,6 +669,54 @@
   padding: 0.5rem;
   z-index: 10;
 }
+
+.export-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.export-btn.csv {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+.export-btn.csv:hover {
+  background: #10b981;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+}
+
+.export-btn.pdf {
+  background: rgba(59, 130, 246, 0.1);
+  color: #2563eb;
+}
+.export-btn.pdf:hover {
+  background: #3b82f6;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+}
+
+.export-btn:active {
+  transform: translateY(0);
+}
+
+
 
 /* =====================================================
    GLOBAL MODAL
@@ -996,3 +1127,4 @@
   }
 
 }
+
