@@ -1,11 +1,16 @@
 :root {
-  --primary-blue: #2563EB;
-  --secondary-green: #10B981;
-  --background: #F8FAFC;
-  --card-bg: #FFFFFF;
-  --text-dark: #1F2937;
-  --radius: 16px;
-  --shadow: 0 8px 24px rgba(0,0,0,0.06);
+  /* Your friend's palette applied to CSS variables */
+  --bg-cream: #EBF4DD;      /* Lightest: Main Background */
+  --sage-border: #90AB8B;   /* Medium Light: Borders/Dividers */
+  --medical-green: #5A7863; /* Medium Dark: Primary Accents/Buttons */
+  --sidebar-dark: #3B5953;  /* Darkest: Navigation/Text */
+  
+  /* Functional mapping */
+  --background: var(--bg-cream);
+  --primary-blue: var(--medical-green); /* Replaced old blue with the new theme */
+  --text-main: var(--sidebar-dark);
+  --card-bg: rgba(255, 255, 255, 0.6); /* Translucent white for glass effect */
+  --radius: 20px;
 }
 
 * {
@@ -16,12 +21,21 @@
 }
 
 body {
-  background-color: var(--background);
-  color: var(--text-dark);
+  background-color: var(--background); /* This sets the cream background site-wide */
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
 }
 
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 2rem;
+}
+
+.glass-morph {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
 }

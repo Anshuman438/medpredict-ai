@@ -25,7 +25,7 @@ const predictionSchema = new mongoose.Schema(
     },
 
     confidence: {
-      type: String,
+      type: Number,
       required: true
     },
 
