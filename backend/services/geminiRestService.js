@@ -26,7 +26,7 @@ const generateGeminiResponse = async (promptText) => {
     return response.data.candidates[0].content.parts[0].text;
 
   } catch (error) {
-    console.error("🔥 GEMINI REST ERROR:", error.response?.data || error.message);
+    console.error(" GEMINI REST ERROR:", error.response?.data || error.message);
     return "AI service temporarily unavailable.";
   }
 };
