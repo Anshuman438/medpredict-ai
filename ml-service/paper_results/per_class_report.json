@@ -1,0 +1,289 @@
+[
+  {
+    "condition": "AIDS",
+    "precision": 0.7647,
+    "recall": 0.6842,
+    "f1": 0.7222,
+    "support": 38
+  },
+  {
+    "condition": "Acne",
+    "precision": 0.7692,
+    "recall": 0.7143,
+    "f1": 0.7407,
+    "support": 28
+  },
+  {
+    "condition": "Alcoholic Hepatitis",
+    "precision": 0.6562,
+    "recall": 0.6364,
+    "f1": 0.6462,
+    "support": 33
+  },
+  {
+    "condition": "Allergy",
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 33
+  },
+  {
+    "condition": "Arthritis",
+    "precision": 0.7778,
+    "recall": 0.8485,
+    "f1": 0.8116,
+    "support": 33
+  },
+  {
+    "condition": "Bronchial Asthma",
+    "precision": 0.8571,
+    "recall": 0.9091,
+    "f1": 0.8824,
+    "support": 33
+  },
+  {
+    "condition": "Cervical Spondylosis",
+    "precision": 0.9375,
+    "recall": 0.9677,
+    "f1": 0.9524,
+    "support": 31
+  },
+  {
+    "condition": "Chicken Pox",
+    "precision": 0.3824,
+    "recall": 0.4062,
+    "f1": 0.3939,
+    "support": 32
+  },
+  {
+    "condition": "Chronic Cholestasis",
+    "precision": 0.8235,
+    "recall": 0.875,
+    "f1": 0.8485,
+    "support": 32
+  },
+  {
+    "condition": "Common Cold",
+    "precision": 1.0,
+    "recall": 0.9,
+    "f1": 0.9474,
+    "support": 30
+  },
+  {
+    "condition": "Dengue",
+    "precision": 0.7667,
+    "recall": 0.7667,
+    "f1": 0.7667,
+    "support": 30
+  },
+  {
+    "condition": "Diabetes",
+    "precision": 0.8889,
+    "recall": 0.9697,
+    "f1": 0.9275,
+    "support": 33
+  },
+  {
+    "condition": "Dimorphic Hemorrhoids",
+    "precision": 0.8667,
+    "recall": 0.8966,
+    "f1": 0.8814,
+    "support": 29
+  },
+  {
+    "condition": "Drug Reaction",
+    "precision": 0.575,
+    "recall": 0.6571,
+    "f1": 0.6133,
+    "support": 35
+  },
+  {
+    "condition": "Fungal Infection",
+    "precision": 0.7143,
+    "recall": 0.7692,
+    "f1": 0.7407,
+    "support": 26
+  },
+  {
+    "condition": "GERD",
+    "precision": 0.875,
+    "recall": 0.9032,
+    "f1": 0.8889,
+    "support": 31
+  },
+  {
+    "condition": "Gastroenteritis",
+    "precision": 0.6667,
+    "recall": 0.8667,
+    "f1": 0.7536,
+    "support": 30
+  },
+  {
+    "condition": "Heart Attack",
+    "precision": 1.0,
+    "recall": 0.9394,
+    "f1": 0.9688,
+    "support": 33
+  },
+  {
+    "condition": "Hepatitis A",
+    "precision": 0.6,
+    "recall": 0.375,
+    "f1": 0.4615,
+    "support": 32
+  },
+  {
+    "condition": "Hepatitis B",
+    "precision": 0.6842,
+    "recall": 0.7879,
+    "f1": 0.7324,
+    "support": 33
+  },
+  {
+    "condition": "Hepatitis C",
+    "precision": 0.7273,
+    "recall": 0.7273,
+    "f1": 0.7273,
+    "support": 33
+  },
+  {
+    "condition": "Hepatitis D",
+    "precision": 0.1667,
+    "recall": 0.129,
+    "f1": 0.1455,
+    "support": 31
+  },
+  {
+    "condition": "Hepatitis E",
+    "precision": 0.3824,
+    "recall": 0.3824,
+    "f1": 0.3824,
+    "support": 34
+  },
+  {
+    "condition": "Hypertension",
+    "precision": 0.8621,
+    "recall": 0.7353,
+    "f1": 0.7937,
+    "support": 34
+  },
+  {
+    "condition": "Hyperthyroidism",
+    "precision": 0.7812,
+    "recall": 0.7353,
+    "f1": 0.7576,
+    "support": 34
+  },
+  {
+    "condition": "Hypoglycemia",
+    "precision": 0.8077,
+    "recall": 0.6364,
+    "f1": 0.7119,
+    "support": 33
+  },
+  {
+    "condition": "Hypothyroidism",
+    "precision": 0.8387,
+    "recall": 0.8125,
+    "f1": 0.8254,
+    "support": 32
+  },
+  {
+    "condition": "Impetigo",
+    "precision": 0.5312,
+    "recall": 0.4857,
+    "f1": 0.5075,
+    "support": 35
+  },
+  {
+    "condition": "Jaundice",
+    "precision": 0.7941,
+    "recall": 0.871,
+    "f1": 0.8308,
+    "support": 31
+  },
+  {
+    "condition": "Malaria",
+    "precision": 0.871,
+    "recall": 0.8182,
+    "f1": 0.8438,
+    "support": 33
+  },
+  {
+    "condition": "Migraine",
+    "precision": 0.8182,
+    "recall": 0.931,
+    "f1": 0.871,
+    "support": 29
+  },
+  {
+    "condition": "Osteoarthritis",
+    "precision": 0.8485,
+    "recall": 0.875,
+    "f1": 0.8615,
+    "support": 32
+  },
+  {
+    "condition": "Paralysis Brain Hemorrhage",
+    "precision": 0.7714,
+    "recall": 0.8438,
+    "f1": 0.806,
+    "support": 32
+  },
+  {
+    "condition": "Peptic Ulcer Disease",
+    "precision": 0.8571,
+    "recall": 0.8824,
+    "f1": 0.8696,
+    "support": 34
+  },
+  {
+    "condition": "Pneumonia",
+    "precision": 0.7353,
+    "recall": 0.8333,
+    "f1": 0.7812,
+    "support": 30
+  },
+  {
+    "condition": "Psoriasis",
+    "precision": 0.8235,
+    "recall": 0.875,
+    "f1": 0.8485,
+    "support": 32
+  },
+  {
+    "condition": "Tuberculosis",
+    "precision": 0.9286,
+    "recall": 0.8387,
+    "f1": 0.8814,
+    "support": 31
+  },
+  {
+    "condition": "Typhoid",
+    "precision": 0.7714,
+    "recall": 0.8438,
+    "f1": 0.806,
+    "support": 32
+  },
+  {
+    "condition": "Urinary Tract Infection",
+    "precision": 0.9091,
+    "recall": 0.9375,
+    "f1": 0.9231,
+    "support": 32
+  },
+  {
+    "condition": "Varicose Veins",
+    "precision": 0.8966,
+    "recall": 0.7879,
+    "f1": 0.8387,
+    "support": 33
+  },
+  {
+    "condition": "Vertigo Paroxysmal Positional",
+    "precision": 0.8667,
+    "recall": 0.8667,
+    "f1": 0.8667,
+    "support": 30
+  }
+]

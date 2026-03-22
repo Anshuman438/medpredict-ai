@@ -1,0 +1,56 @@
+[
+  {
+    "model": "Random Forest",
+    "accuracy": 76.07,
+    "macro_f1": 0.7556,
+    "macro_precision": 0.7545,
+    "macro_recall": 0.7635,
+    "train_time_sec": 1.08,
+    "infer_ms_per_sample": 0.0523
+  },
+  {
+    "model": "XGBoost",
+    "accuracy": 74.92,
+    "macro_f1": 0.7496,
+    "macro_precision": 0.7512,
+    "macro_recall": 0.7522,
+    "train_time_sec": 7.0,
+    "infer_ms_per_sample": 0.0407
+  },
+  {
+    "model": "Extra Trees",
+    "accuracy": 75.69,
+    "macro_f1": 0.7527,
+    "macro_precision": 0.7522,
+    "macro_recall": 0.7596,
+    "train_time_sec": 1.22,
+    "infer_ms_per_sample": 0.0493
+  },
+  {
+    "model": "LightGBM",
+    "accuracy": 69.59,
+    "macro_f1": 0.6955,
+    "macro_precision": 0.6962,
+    "macro_recall": 0.6978,
+    "train_time_sec": 8.01,
+    "infer_ms_per_sample": 0.2152
+  },
+  {
+    "model": "RF+XGB Static Ensemble",
+    "accuracy": 75.53,
+    "macro_f1": 0.7539,
+    "macro_precision": 0.7551,
+    "macro_recall": 0.7583,
+    "train_time_sec": "N/A",
+    "infer_ms_per_sample": "N/A"
+  },
+  {
+    "model": "SLEEM (proposed)",
+    "accuracy": 77.13,
+    "macro_f1": 0.7697,
+    "macro_precision": 0.7706,
+    "macro_recall": 0.7737,
+    "train_time_sec": "see model_meta.json",
+    "infer_ms_per_sample": 0.0677
+  }
+]

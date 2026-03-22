@@ -1,0 +1,133 @@
+{
+  "model_version": "sleem_v1",
+  "model_type": "Self-Learning Evolutionary Ensemble Model",
+  "accuracy": 0.7713,
+  "f1_macro": 0.7697,
+  "n_features": 24,
+  "n_classes": 41,
+  "conditions": [
+    "AIDS",
+    "Acne",
+    "Alcoholic Hepatitis",
+    "Allergy",
+    "Arthritis",
+    "Bronchial Asthma",
+    "Cervical Spondylosis",
+    "Chicken Pox",
+    "Chronic Cholestasis",
+    "Common Cold",
+    "Dengue",
+    "Diabetes",
+    "Dimorphic Hemorrhoids",
+    "Drug Reaction",
+    "Fungal Infection",
+    "GERD",
+    "Gastroenteritis",
+    "Heart Attack",
+    "Hepatitis A",
+    "Hepatitis B",
+    "Hepatitis C",
+    "Hepatitis D",
+    "Hepatitis E",
+    "Hypertension",
+    "Hyperthyroidism",
+    "Hypoglycemia",
+    "Hypothyroidism",
+    "Impetigo",
+    "Jaundice",
+    "Malaria",
+    "Migraine",
+    "Osteoarthritis",
+    "Paralysis Brain Hemorrhage",
+    "Peptic Ulcer Disease",
+    "Pneumonia",
+    "Psoriasis",
+    "Tuberculosis",
+    "Typhoid",
+    "Urinary Tract Infection",
+    "Varicose Veins",
+    "Vertigo Paroxysmal Positional"
+  ],
+  "features": [
+    "fever",
+    "headache",
+    "fatigue",
+    "cough",
+    "chest_pain",
+    "shortness_of_breath",
+    "nausea",
+    "dizziness",
+    "sore_throat",
+    "body_ache",
+    "blurred_vision",
+    "rapid_heartbeat",
+    "chills",
+    "loss_of_appetite",
+    "insomnia",
+    "acidity",
+    "indigestion",
+    "stomach_pain",
+    "vomiting",
+    "skin_rash",
+    "itching",
+    "joint_pain",
+    "sweating",
+    "weight_loss"
+  ],
+  "evolution_history": [
+    {
+      "generation": 1,
+      "best_accuracy": 0.7505,
+      "best_f1": 0.7469
+    },
+    {
+      "generation": 2,
+      "best_accuracy": 0.7505,
+      "best_f1": 0.7469
+    },
+    {
+      "generation": 3,
+      "best_accuracy": 0.7505,
+      "best_f1": 0.7469
+    },
+    {
+      "generation": 4,
+      "best_accuracy": 0.7552,
+      "best_f1": 0.7521
+    },
+    {
+      "generation": 5,
+      "best_accuracy": 0.7552,
+      "best_f1": 0.7521
+    },
+    {
+      "generation": 6,
+      "best_accuracy": 0.7581,
+      "best_f1": 0.7559
+    },
+    {
+      "generation": 7,
+      "best_accuracy": 0.7581,
+      "best_f1": 0.7559
+    },
+    {
+      "generation": 8,
+      "best_accuracy": 0.7629,
+      "best_f1": 0.7602
+    }
+  ],
+  "best_model_types": [
+    "XGBClassifier",
+    "RandomForestClassifier",
+    "XGBClassifier"
+  ],
+  "best_model_weights": [
+    0.5627,
+    0.3296,
+    0.1077
+  ],
+  "population_size": 10,
+  "generations": 8,
+  "training_samples": 5248,
+  "test_samples": 1312
+}

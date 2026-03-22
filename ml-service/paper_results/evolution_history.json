@@ -1,0 +1,42 @@
+[
+  {
+    "generation": 1,
+    "best_accuracy": 0.7505,
+    "best_f1": 0.7469
+  },
+  {
+    "generation": 2,
+    "best_accuracy": 0.7505,
+    "best_f1": 0.7469
+  },
+  {
+    "generation": 3,
+    "best_accuracy": 0.7505,
+    "best_f1": 0.7469
+  },
+  {
+    "generation": 4,
+    "best_accuracy": 0.7552,
+    "best_f1": 0.7521
+  },
+  {
+    "generation": 5,
+    "best_accuracy": 0.7552,
+    "best_f1": 0.7521
+  },
+  {
+    "generation": 6,
+    "best_accuracy": 0.7581,
+    "best_f1": 0.7559
+  },
+  {
+    "generation": 7,
+    "best_accuracy": 0.7581,
+    "best_f1": 0.7559
+  },
+  {
+    "generation": 8,
+    "best_accuracy": 0.7629,
+    "best_f1": 0.7602
+  }
+]
