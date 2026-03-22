@@ -1,13 +1,11 @@
 {
   "model_types": [
-    "XGBClassifier",
     "RandomForestClassifier",
     "XGBClassifier"
   ],
   "weights": [
-    0.5627,
-    0.3296,
-    0.1077
+    0.219,
+    0.781
   ],
-  "n_models": 3
+  "n_models": 2
 }

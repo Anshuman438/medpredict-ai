@@ -2,51 +2,51 @@
   {
     "true_condition": "Impetigo",
     "predicted_condition": "Chicken Pox",
-    "count": 13
+    "count": 108
   },
   {
     "true_condition": "Chicken Pox",
     "predicted_condition": "Impetigo",
-    "count": 10
+    "count": 74
   },
   {
-    "true_condition": "Drug Reaction",
-    "predicted_condition": "Chicken Pox",
-    "count": 8
+    "true_condition": "Paralysis Brain Hemorrhage",
+    "predicted_condition": "Hypertension",
+    "count": 56
   },
   {
-    "true_condition": "Hepatitis A",
-    "predicted_condition": "Hepatitis E",
-    "count": 8
+    "true_condition": "Hyperthyroidism",
+    "predicted_condition": "Hypoglycemia",
+    "count": 46
   },
   {
-    "true_condition": "Hypertension",
-    "predicted_condition": "Paralysis Brain Hemorrhage",
-    "count": 8
-  },
-  {
-    "true_condition": "Hypoglycemia",
-    "predicted_condition": "Hyperthyroidism",
-    "count": 7
-  },
-  {
-    "true_condition": "Hepatitis E",
+    "true_condition": "Alcoholic Hepatitis",
     "predicted_condition": "Hepatitis D",
-    "count": 7
+    "count": 39
   },
   {
-    "true_condition": "Chicken Pox",
-    "predicted_condition": "Drug Reaction",
-    "count": 7
-  },
-  {
-    "true_condition": "Hepatitis A",
-    "predicted_condition": "Hepatitis D",
-    "count": 7
+    "true_condition": "Hepatitis B",
+    "predicted_condition": "Hepatitis C",
+    "count": 34
   },
   {
     "true_condition": "Hepatitis D",
-    "predicted_condition": "Hepatitis E",
-    "count": 6
+    "predicted_condition": "Gastroenteritis",
+    "count": 32
+  },
+  {
+    "true_condition": "Hepatitis C",
+    "predicted_condition": "Hepatitis B",
+    "count": 29
+  },
+  {
+    "true_condition": "Urinary Tract Infection",
+    "predicted_condition": "Hepatitis D",
+    "count": 24
+  },
+  {
+    "true_condition": "Gastroenteritis",
+    "predicted_condition": "Hepatitis D",
+    "count": 23
   }
 ]

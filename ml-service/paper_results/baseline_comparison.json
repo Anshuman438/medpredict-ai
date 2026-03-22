@@ -1,56 +1,56 @@
 [
   {
     "model": "Random Forest",
-    "accuracy": 76.07,
-    "macro_f1": 0.7556,
-    "macro_precision": 0.7545,
-    "macro_recall": 0.7635,
-    "train_time_sec": 1.08,
-    "infer_ms_per_sample": 0.0523
+    "accuracy": 90.27,
+    "macro_f1": 0.9015,
+    "macro_precision": 0.9048,
+    "macro_recall": 0.9027,
+    "train_time_sec": 3.11,
+    "infer_ms_per_sample": 0.0545
   },
   {
     "model": "XGBoost",
-    "accuracy": 74.92,
-    "macro_f1": 0.7496,
-    "macro_precision": 0.7512,
-    "macro_recall": 0.7522,
-    "train_time_sec": 7.0,
-    "infer_ms_per_sample": 0.0407
+    "accuracy": 90.06,
+    "macro_f1": 0.9009,
+    "macro_precision": 0.9041,
+    "macro_recall": 0.9006,
+    "train_time_sec": 13.02,
+    "infer_ms_per_sample": 0.0235
   },
   {
     "model": "Extra Trees",
-    "accuracy": 75.69,
-    "macro_f1": 0.7527,
-    "macro_precision": 0.7522,
-    "macro_recall": 0.7596,
-    "train_time_sec": 1.22,
-    "infer_ms_per_sample": 0.0493
+    "accuracy": 90.14,
+    "macro_f1": 0.9008,
+    "macro_precision": 0.9036,
+    "macro_recall": 0.9014,
+    "train_time_sec": 3.55,
+    "infer_ms_per_sample": 0.0535
   },
   {
     "model": "LightGBM",
-    "accuracy": 69.59,
-    "macro_f1": 0.6955,
-    "macro_precision": 0.6962,
-    "macro_recall": 0.6978,
-    "train_time_sec": 8.01,
-    "infer_ms_per_sample": 0.2152
+    "accuracy": 89.69,
+    "macro_f1": 0.8974,
+    "macro_precision": 0.8998,
+    "macro_recall": 0.8969,
+    "train_time_sec": 13.3,
+    "infer_ms_per_sample": 0.1577
   },
   {
     "model": "RF+XGB Static Ensemble",
-    "accuracy": 75.53,
-    "macro_f1": 0.7539,
-    "macro_precision": 0.7551,
-    "macro_recall": 0.7583,
+    "accuracy": 90.12,
+    "macro_f1": 0.901,
+    "macro_precision": 0.9027,
+    "macro_recall": 0.9012,
     "train_time_sec": "N/A",
     "infer_ms_per_sample": "N/A"
   },
   {
     "model": "SLEEM (proposed)",
-    "accuracy": 77.13,
-    "macro_f1": 0.7697,
-    "macro_precision": 0.7706,
-    "macro_recall": 0.7737,
+    "accuracy": 90.07,
+    "macro_f1": 0.9009,
+    "macro_precision": 0.903,
+    "macro_recall": 0.9007,
     "train_time_sec": "see model_meta.json",
-    "infer_ms_per_sample": 0.0677
+    "infer_ms_per_sample": 0.0959
   }
 ]
