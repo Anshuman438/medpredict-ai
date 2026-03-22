@@ -8,3 +8,6 @@ venv/
 .env.local
 coverage/
 .DS_Store
+ml-service/models/
+*.pkl
+*.joblib
