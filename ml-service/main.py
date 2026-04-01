@@ -1,3 +1,12 @@
+"""
+MedPredict AI — Flask API
+SLEEM v4 | Ternary severity input | Port 8000
+"""
+import os, warnings, logging
+os.environ["LIGHTGBM_VERBOSITY"] = "-1"
+warnings.filterwarnings("ignore")
+logging.getLogger("lightgbm").setLevel(logging.ERROR)
+
 import numpy as np
 import joblib
 import json
@@ -13,10 +22,7 @@ with open("models/model_meta.json") as f:
 
 FEATURES = meta["features"]
 
-# Maps UI label -> feature index and severity
-# UI sends symptom names; we map to severity 2 (severe) by default
-# User can optionally send {"symptom": "fever", "severity": 1} for mild
-
+# Symptom name aliases -> canonical feature name
 ALIASES = {
     "fever":"fever","headache":"headache","fatigue":"fatigue",
     "cough":"cough","chest pain":"chest_pain","chest_pain":"chest_pain",
@@ -25,54 +31,76 @@ ALIASES = {
     "breathlessness":"shortness_of_breath",
     "nausea":"nausea","dizziness":"dizziness",
     "sore throat":"sore_throat","sore_throat":"sore_throat",
+    "throat irritation":"sore_throat",
     "body ache":"body_ache","body_ache":"body_ache",
+    "muscle pain":"body_ache",
     "blurred vision":"blurred_vision","blurred_vision":"blurred_vision",
     "rapid heartbeat":"rapid_heartbeat","rapid_heartbeat":"rapid_heartbeat",
-    "palpitations":"rapid_heartbeat","chills":"chills",
-    "loss of appetite":"loss_of_appetite","loss_of_appetite":"loss_of_appetite",
-    "insomnia":"insomnia","acidity":"acidity","indigestion":"indigestion",
+    "palpitations":"rapid_heartbeat","fast heart rate":"rapid_heartbeat",
+    "chills":"chills",
+    "loss of appetite":"loss_of_appetite",
+    "loss_of_appetite":"loss_of_appetite",
+    "insomnia":"insomnia","restlessness":"insomnia",
+    "acidity":"acidity","heartburn":"acidity","acid reflux":"acidity",
+    "indigestion":"indigestion",
     "stomach pain":"stomach_pain","stomach_pain":"stomach_pain",
-    "vomiting":"vomiting","skin rash":"skin_rash","skin_rash":"skin_rash",
-    "rash":"skin_rash","itching":"itching",
+    "abdominal pain":"stomach_pain","stomach ache":"stomach_pain",
+    "vomiting":"vomiting","diarrhoea":"vomiting","diarrhea":"vomiting",
+    "skin rash":"skin_rash","skin_rash":"skin_rash","rash":"skin_rash",
+    "itching":"itching","skin irritation":"itching",
     "joint pain":"joint_pain","joint_pain":"joint_pain",
-    "sweating":"sweating","weight loss":"weight_loss","weight_loss":"weight_loss",
-    "high fever":"fever","mild fever":"fever","low fever":"fever",
-    "tired":"fatigue","tiredness":"fatigue","weakness":"fatigue",
-    "muscle pain":"body_ache","throat irritation":"sore_throat",
-    "heartburn":"acidity","acid reflux":"acidity",
-    "stomach ache":"stomach_pain","abdominal pain":"stomach_pain",
-    "loose motion":"vomiting","diarrhoea":"vomiting","diarrhea":"vomiting",
-    "skin irritation":"itching","joint ache":"joint_pain",
-    "excessive sweating":"sweating","night sweats":"sweating",
+    "joint ache":"joint_pain",
+    "sweating":"sweating","night sweats":"sweating",
+    "excessive sweating":"sweating",
+    "weight loss":"weight_loss","weight_loss":"weight_loss",
     "weight reduction":"weight_loss","losing weight":"weight_loss",
+    "high fever":"fever","mild fever":"fever","low grade fever":"fever",
+    "tired":"fatigue","tiredness":"fatigue","weakness":"fatigue",
+}
+
+# Severity word -> integer value
+SEVERITY_WORDS = {
+    "mild":1,"slight":1,"moderate":1,"low":1,
+    "severe":2,"high":2,"extreme":2,"acute":2,"very":2,
 }
 
 
 def normalize(raw_symptoms):
     """
-    Accepts either:
-      ["Fever", "Headache"]              -> all severity 2
-      [{"symptom":"Fever","severity":2}] -> explicit severity
+    Accepts:
+      ["fever", "cough"]                        -> severity 2 (default)
+      ["mild fever", "severe cough"]            -> parsed from name
+      [{"symptom":"fever","severity":2}, ...]   -> explicit severity
+    Returns: feature vector, matched list, unmatched list
     """
-    vec = {f: 0 for f in FEATURES}
-    matched = []
+    vec       = {f: 0 for f in FEATURES}
+    matched   = []
     unmatched = []
 
     for item in raw_symptoms:
         if isinstance(item, dict):
-            name     = item.get("symptom", "")
+            name     = str(item.get("symptom", ""))
             severity = int(item.get("severity", 2))
         else:
             name     = str(item)
-            severity = 2   # default: severe when just a name is sent
+            severity = 2
+            # Check if severity word is embedded in name
+            name_lower = name.lower().strip()
+            for word, val in SEVERITY_WORDS.items():
+                if name_lower.startswith(word + " ") or \
+                   name_lower.endswith(" " + word):
+                    severity = val
+                    name_lower = name_lower.replace(word, "").strip()
+                    break
+            name = name_lower
 
         key   = name.lower().strip()
         canon = ALIASES.get(key)
         if canon and canon in vec:
-            vec[canon] = max(vec[canon], severity)  # take highest severity
+            vec[canon] = max(vec[canon], severity)
             matched.append(canon)
         else:
-            unmatched.append(name)
+            unmatched.append(str(item))
 
     arr = np.array([vec[f] for f in FEATURES]).reshape(1, -1)
     return arr, matched, unmatched
@@ -88,12 +116,11 @@ def risk_label(s):
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    data = request.get_json(force=True)
-    raw  = data.get("symptoms", [])
-
-    vec, matched, unmatched = normalize(raw)
-    count = int((vec > 0).sum())   # count present symptoms (any severity)
-    sev   = severity_score(count)
+    data              = request.get_json(force=True)
+    raw               = data.get("symptoms", [])
+    vec, matched, unk = normalize(raw)
+    count             = int((vec > 0).sum())
+    sev               = severity_score(count)
 
     if count < 3:
         return jsonify({
@@ -103,18 +130,19 @@ def predict():
             "confidence_margin":     0.0,
             "severity_score":        sev,
             "important_factors":     matched,
-            "unrecognized_symptoms": unmatched,
+            "unrecognized_symptoms": unk,
             "top_predictions":       [],
             "model_version":         meta["model_version"],
-            "reason":                f"Only {count} symptom(s) recognized. Minimum 3 required."
+            "reason":                f"{count} symptom(s) found. "
+                                     "Minimum 3 required."
         })
 
     probs      = sleem.predict_proba(vec)[0]
-    sorted_idx = np.argsort(probs)[::-1]
-    condition  = le.classes_[sorted_idx[0]]
-    confidence = float(probs[sorted_idx[0]])
-    margin     = float(probs[sorted_idx[0]] - probs[sorted_idx[1]]) \
-                 if len(sorted_idx) > 1 else 1.0
+    top_idx    = np.argsort(probs)[::-1]
+    condition  = le.classes_[top_idx[0]]
+    confidence = float(probs[top_idx[0]])
+    margin     = float(probs[top_idx[0]] - probs[top_idx[1]]) \
+                 if len(top_idx) > 1 else 1.0
 
     if confidence < 0.20 or margin < 0.05:
         condition = "Inconclusive"
@@ -126,37 +154,66 @@ def predict():
         "confidence_margin":     round(margin, 4),
         "severity_score":        sev,
         "important_factors":     matched,
-        "unrecognized_symptoms": unmatched,
+        "unrecognized_symptoms": unk,
         "top_predictions": [
             {"condition":   le.classes_[i],
              "probability": round(float(probs[i]), 4)}
-            for i in sorted_idx[:3]
+            for i in top_idx[:3]
         ],
         "model_version": meta["model_version"]
     })
 
 
-@app.route("/health",     methods=["GET"])
+@app.route("/health", methods=["GET"])
 def health():
     return jsonify({
-        "status":     "ok",
-        "model":      meta["model_version"],
-        "accuracy":   meta["accuracy"],
-        "f1_macro":   meta["f1_macro"],
-        "conditions": meta["n_classes"],
-        "features":   meta["n_features"],
-        "meta_learner": meta.get("meta_learner","N/A")
+        "status":        "ok",
+        "model":         meta["model_version"],
+        "accuracy":      meta["accuracy"],
+        "f1_macro":      meta["f1_macro"],
+        "precision":     meta.get("precision_macro"),
+        "recall":        meta.get("recall_macro"),
+        "conditions":    meta["n_classes"],
+        "features":      meta["n_features"],
+        "feature_type":  meta.get("feature_type"),
+        "meta_learner":  meta.get("meta_learner"),
+        "stacking_folds":meta.get("stacking_folds"),
     })
+
 
 @app.route("/conditions", methods=["GET"])
 def conditions():
-    return jsonify({"conditions": list(le.classes_), "total": len(le.classes_)})
+    return jsonify({
+        "conditions": list(le.classes_),
+        "total":      len(le.classes_)
+    })
 
-@app.route("/symptoms",   methods=["GET"])
-def symptoms_list():
-    return jsonify({"symptoms": FEATURES, "total": len(FEATURES),
-                    "severity_levels": {"0":"absent","1":"mild","2":"severe"}})
+
+@app.route("/symptoms", methods=["GET"])
+def symptoms():
+    return jsonify({
+        "symptoms":        FEATURES,
+        "total":           len(FEATURES),
+        "severity_levels": {
+            "0": "absent",
+            "1": "mild",
+            "2": "severe"
+        },
+        "usage_tip": (
+            "Send symptoms as strings (e.g. 'fever') for severity 2, "
+            "'mild fever' for severity 1, or as dicts "
+            "{\"symptom\":\"fever\",\"severity\":2} for explicit control."
+        )
+    })
 
 
 if __name__ == "__main__":
+    print("=" * 50)
+    print(f"  MedPredict AI — SLEEM {meta['model_version']}")
+    print(f"  Accuracy  : {meta['accuracy']*100:.2f}%")
+    print(f"  Macro F1  : {meta['f1_macro']:.4f}")
+    print(f"  Classes   : {meta['n_classes']}")
+    print(f"  Features  : {meta['n_features']} (ternary severity)")
+    print(f"  API       : http://localhost:8000")
+    print("=" * 50)
     app.run(host="0.0.0.0", port=8000, debug=False)
